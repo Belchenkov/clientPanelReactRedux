@@ -7,9 +7,11 @@ import {
 
 import './App.css';
 
+import AddClient from './components/clients/AddClient';
 import AppNavbar from './components/layout/AppNavbar';
 import Dashboard from './components/layout/Dashboard';
-import AddClient from './components/clients/AddClient';
+import ClientDetails from './components/clients/ClientDetails';
+
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -32,6 +34,11 @@ class App extends Component {
                     exact
                     path="/client/add"
                     component={ AddClient }
+                  />
+                  <Route
+                    exact
+                    path="/client/:id"
+                    component={ ClientDetails }
                   />
                 </Switch>
               </div>

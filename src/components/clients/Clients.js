@@ -68,7 +68,7 @@ class Clients extends Component {
                                 <td>{parseFloat(client.balance).toFixed(2)}</td>
                                 <td>
                                     <Link
-                                        to={`/clients/${client.id}`}
+                                        to={`/client/${client.id}`}
                                         className="btn btn-outline-dark btn-sm"
                                     >
                                         <i className="fas fa-arrow-circle-right"></i> Подробнее
