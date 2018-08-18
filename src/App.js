@@ -9,6 +9,7 @@ import './App.css';
 
 import AppNavbar from './components/layout/AppNavbar';
 import Dashboard from './components/layout/Dashboard';
+import AddClient from './components/clients/AddClient';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -26,6 +27,11 @@ class App extends Component {
                     exact
                     path="/"
                     component={ Dashboard }
+                  />
+                  <Route
+                    exact
+                    path="/client/add"
+                    component={ AddClient }
                   />
                 </Switch>
               </div>

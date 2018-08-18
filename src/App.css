@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Chewy|Comfortaa:400,700&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p:400,700&subset=cyrillic');
 
 body {
   font-size: 0.9rem;
-  font-family: 'Comfortaa', cursive!important;
+  font-family: 'M PLUS 1p', sans-serif!important;
 }
 
 .navbar-brand {
@@ -19,4 +20,14 @@ body {
 .nav-link.nav-a:hover {
   transition: all .4s;
   transform: translateY(-3px);
+}
+
+.back-link {
+  text-decoration: none!important;
+  transition: all .4s;
+}
+
+.back-link:hover {
+  transition: all .4s;
+  transform: translateX(-3px);
 }
