@@ -1,28 +1,11 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Chewy|M+PLUS+1p:400,700&subset=cyrillic');
+
+body {
+  font-size: 0.9rem;
+  font-family: 'M PLUS 1p', sans-serif!important;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.navbar-brand {
+  font-size: 1.8rem;
+  font-family: 'Chewy', cursive;
 }
