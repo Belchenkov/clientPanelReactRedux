@@ -8,9 +8,72 @@ import Spinner from '../layout/Spinner';
 import classnames from 'classnames';
 
 class ClientDetails extends Component {
+    state = {
+        showBalanceUpdate: false,
+        balanceUpdateAmount: ''
+    };
+
+    onChange = e => this.setState({[e.target.name]: e.target.value});
+
+    // Update Balance
+    balanceSubmit = e => {
+        e.preventDefault();
+
+        const { client, firestore } = this.props;
+        const { balanceUpdateAmount } = this.state;
+
+        const clientUpdate = {
+            balance: parseFloat(balanceUpdateAmount)
+        };
+
+        // Update in firestore
+        firestore.update({collection: 'clients', doc: client.id}, clientUpdate);
+
+        // Disabled Update Form
+        this.setState({
+            showBalanceUpdate: false
+        });
+    };
+
+    // Delete Client
+    onDeleteClick = () => {
+        const { client, firestore, history } = this.props;
+
+        firestore.delete({collection: 'clients', doc: client.id})
+            .then(history.push('/'))
+    }
 
     render() {
         const { client } = this.props;
+        const { showBalanceUpdate, balanceUpdateAmount } = this.state;
+
+        let balanceForm = '';
+
+        // If balance form should display
+        if (showBalanceUpdate) {
+            balanceForm = (
+                <form onSubmit={this.balanceSubmit}>
+                    <div className="input-group my-3">
+                        <input 
+                            type="text" 
+                            className="form-control"
+                            name="balanceUpdateAmount"    
+                            placeholder="Обновить баланс ..."
+                            value={balanceUpdateAmount}
+                            onChange={this.onChange}
+                        />
+                        <div className="input group-append">
+                            <button 
+                                className="btn btn-dark"
+                                type="submit"
+                            >Обновить</button>
+                        </div>
+                    </div>
+                </form>
+            );
+        } else {
+            balanceForm = null;
+        }
 
         if (client) {
             return (
@@ -26,28 +89,31 @@ class ClientDetails extends Component {
                                 <Link 
                                     to={`/client/edit/${client.id}`} 
                                     className="btn btn-dark"
-                                ><i class="far fa-edit"></i> Редактировать</Link>
-                                <button className="btn btn-danger">
-                                    Удалить <i class="far fa-trash-alt"></i>
+                                ><i className="far fa-edit"></i> Редактировать</Link>
+                                <button 
+                                    className="btn btn-danger"
+                                    onClick={this.onDeleteClick}    
+                                >
+                                    Удалить <i className="far fa-trash-alt"></i>
                                 </button>
                             </div>
                         </div>
                     </div>  
                     <div className="card">
                         <h3 className="card-header text-lg-center bg-info text-white font-weight-bold">
-                            <i class="fas fa-user-tie"></i> {client.firstName} {client.lastName}
+                            <i className="fas fa-user-tie"></i> {client.firstName} {client.lastName}
                         </h3>
                         <hr/>
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-md-8 col-sm-6">
                                     <h4>
-                                        <i class="fas fa-hashtag"></i> ID: {' '} <span className="text-dark">{client.id}</span>
+                                        <i className="fas fa-hashtag"></i> ID: {' '} <span className="text-dark">{client.id}</span>
                                     </h4>
                                 </div>
                                 <div className="col-md-4 col-sm-6">
                                     <h3 className="pull-rig">
-                                        <i class="fas fa-money-bill"></i> 
+                                        <i className="fas fa-money-bill"></i> 
                                          {' '}Баланс: 
                                         <span 
                                             className={classnames({
@@ -56,16 +122,23 @@ class ClientDetails extends Component {
                                             })}
                                         >
                                           ${parseFloat(client.balance).toFixed(2)}</span>
+                                          <small className="ml-4">
+                                              <a href="#!" onClick={() => this.setState({
+                                                  showBalanceUpdate: !this.state.showBalanceUpdate
+                                              })}>
+                                                 <i className="fas fa-pencil-alt text-dark"></i>
+                                              </a>
+                                          </small>
                                     </h3>
-                                    {/*Balance Form*/}
+                                    { balanceForm }
                                 </div>
                             </div>
                             <ul className="list-grou">
                                 <li className="list-group-item">
-                                    <i class="far fa-envelope"></i> Email: {client.email}
+                                    <i className="far fa-envelope"></i> Email: {client.email}
                                 </li>
                                 <li className="list-group-item">
-                                    <i class="fas fa-phone"></i> Телефон {client.phone}
+                                    <i className="fas fa-phone"></i> Телефон {client.phone}
                                 </li>
                             </ul>
                         </div>
