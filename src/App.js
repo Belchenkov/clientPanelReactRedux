@@ -8,6 +8,7 @@ import {
 import './App.css';
 
 import AddClient from './components/clients/AddClient';
+import EditClient from './components/clients/EditClient';
 import AppNavbar from './components/layout/AppNavbar';
 import Dashboard from './components/layout/Dashboard';
 import ClientDetails from './components/clients/ClientDetails';
@@ -39,6 +40,11 @@ class App extends Component {
                     exact
                     path="/client/:id"
                     component={ ClientDetails }
+                  />
+                  <Route
+                    exact
+                    path="/client/edit/:id"
+                    component={ EditClient }
                   />
                 </Switch>
               </div>
