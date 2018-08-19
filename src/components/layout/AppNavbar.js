@@ -65,6 +65,11 @@ class AppNavbar extends Component {
                                     </a>
                                 </li>
                                 <li className="nav-item">
+                                    <a href="/settings" className="nav-link nav-a">
+                                        <i className="fas fa-user-cog"></i> Настройки
+                                    </a>
+                                </li>
+                                <li className="nav-item">
                                     <a
                                         href="#!"
                                         className="nav-link nav-a"
