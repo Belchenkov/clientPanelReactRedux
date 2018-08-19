@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Chewy|Comfortaa:400,700&subset=cyrillic');
-@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p:400,700&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&subset=cyrillic');
 
 body {
   font-size: 0.9rem;
-  font-family: 'M PLUS 1p', sans-serif!important;
+  font-family: 'M PLUS Rounded 1c', sans-serif!important;
 }
 
 .navbar-brand {
   font-size: 1.8rem;
   font-family: 'Chewy', cursive;
+  text-shadow: 0 0 3px #000;
 }
 
-.nav-link.nav-a {
-  font-style: italic;
-  font-weight: bold;
+.nav-link {
+  font-size: 0.8rem!important;
+  color: #fff!important;
+  font-weight: bold!important;
   transition: all .4s;
+  text-shadow: 0 0 3px #000;
 }
 
 .nav-link.nav-a:hover {

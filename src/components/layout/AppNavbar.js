@@ -61,9 +61,9 @@ class AppNavbar extends Component {
                         { isAuthenticated  ? (
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
-                                    <a href="#!" className="nav-link">
+                                    <span className="nav-link">
                                         <i className="fas fa-user-check"></i> { auth.email }
-                                    </a>
+                                    </span>
                                 </li>
                                 <li className="nav-item">
                                     <a href="/settings" className="nav-link nav-a">

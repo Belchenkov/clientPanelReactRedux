@@ -12,6 +12,14 @@ class Login extends Component {
        password: ''
    };
 
+   componentWillMount() {
+     const { allowRegistration } = this.props.settings;
+
+     if (!allowRegistration) {
+        this.props.history.push('/');
+     }
+   }
+
    onChange = e => this.setState({ [e.target.name]: e.target.value });
 
    onSubmit = e => {
@@ -20,10 +28,9 @@ class Login extends Component {
        const { firebase, notifyUser } = this.props;
        const { email, password } = this.state;
 
-       firebase.login({
-           email,
-           password
-       }).catch(err => notifyUser('Невалидные Email или пароль!', 'error'));
+      // Register with firebase
+      firebase.createUser({ email, password }).catch(err => 
+      notifyUser('Такой пользователь уже существует!', 'error'))
    };
 
   render() {
@@ -37,7 +44,7 @@ class Login extends Component {
                     {message ? (<Alert message={message} messageType={messageType} />) : null}
                     <h1 className="text-lg-center pb-4 pt-3">
                         <span className="text-info">
-                            <i className="fas fa-lock"></i> Войти
+                            <i className="fas fa-registered"></i> Регистрация
                         </span>
                     </h1>
                     <form onSubmit={this.onSubmit}>
@@ -69,7 +76,7 @@ class Login extends Component {
                         </div>
                         <div className="form-group">
                             <button className="btn btn-info btn-block">
-                                <i className="fas fa-sign-in-alt"></i> Войти
+                                <i className="fas fa-registered"></i> Зарегистрироваться
                             </button>
                         </div>
                     </form>
@@ -91,6 +98,7 @@ export default compose(
     firebaseConnect(),
     connect(
         (state, props) => ({
-        notify: state.notify
+        notify: state.notify,
+        settings: state.settings
     }), {notifyUser})
 )(Login);
