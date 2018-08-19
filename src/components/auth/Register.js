@@ -15,9 +15,9 @@ class Login extends Component {
    componentWillMount() {
      const { allowRegistration } = this.props.settings;
 
-     if (!allowRegistration) {
-        this.props.history.push('/');
-     }
+    //  if (!allowRegistration) {
+    //     this.props.history.push('/');
+    //  }
    }
 
    onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -42,10 +42,9 @@ class Login extends Component {
             <div className="card">
                 <div className="card-body">
                     {message ? (<Alert message={message} messageType={messageType} />) : null}
-                    <h1 className="text-lg-center pb-4 pt-3">
-                        <span className="text-info">
+                    <h1 className="font-weight-bold  text-lg-center text-info pb-3 pt-3">  ClientPanel</h1>
+                    <h1 className="text-dark text-lg-center pb-3">
                             <i className="fas fa-registered"></i> Регистрация
-                        </span>
                     </h1>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">

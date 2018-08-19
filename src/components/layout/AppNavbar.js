@@ -82,18 +82,19 @@ class AppNavbar extends Component {
                             </ul>
                         ) : null}
 
-                        {allowRegistration && !isAuthenticated ? (
+                        { !isAuthenticated ? (
                             <ul className="navbar-nav ml-auto">
-                                <li className="nav-item">
-                                    <Link to="/login" className="nav-link nav-a">
-                                    <i className="fas fa-sign-in-alt"></i> Войти</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/register" className="nav-link nav-a">
-                                    <i className="fas fa-registered"></i> Зарегистрироваться</Link>
-                                </li>
-                            </ul>
-                        ) : null}
+                            <li className="nav-item">
+                                <Link to="/login" className="nav-link nav-a">
+                                <i className="fas fa-sign-in-alt"></i> Войти</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/register" className="nav-link nav-a">
+                                <i className="fas fa-registered"></i> Зарегистрироваться</Link>
+                            </li>
+                        </ul>
+                        ) : null }
+                        
                     </div>
                 </div>
             </nav>

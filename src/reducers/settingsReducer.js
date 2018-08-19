@@ -5,9 +5,9 @@ import {
 } from "../actions/types";
 
 const initialState = {
-    disableBalanceOnAdd: true,
+    disableBalanceOnAdd: false,
     disableBalanceOnEdit: false,
-    allowRegistration: false,
+    allowRegistration: true,
 };
 
 export default function (state = {}, action) {

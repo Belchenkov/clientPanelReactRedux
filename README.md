@@ -8,4 +8,4 @@ How use:
 3. npm install
 4. npm start
 
-Preview: 
+Preview: https://reactclientpanel-83c29.firebaseapp.com
