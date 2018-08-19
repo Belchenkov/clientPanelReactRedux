@@ -78,6 +78,6 @@ import { firebaseConnect } from 'react-redux-firebase';
 
 Login.PropTypes = {
   firebase: PropTypes.object.isRequired
-}
+};
 
 export default firebaseConnect()(Login);
