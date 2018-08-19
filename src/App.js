@@ -12,6 +12,7 @@ import EditClient from './components/clients/EditClient';
 import AppNavbar from './components/layout/AppNavbar';
 import Dashboard from './components/layout/Dashboard';
 import ClientDetails from './components/clients/ClientDetails';
+import Login from './components/auth/Login';
 
 
 import { Provider } from 'react-redux';
@@ -45,6 +46,11 @@ class App extends Component {
                     exact
                     path="/client/edit/:id"
                     component={ EditClient }
+                  />
+                  <Route
+                    exact
+                    path="/login"
+                    component={ Login }
                   />
                 </Switch>
               </div>
