@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { UserIsAuthenticated, UserIsNotAuthenticated } from './helpers/auth';
 import {
   BrowserRouter as Router,
   Route,
@@ -30,27 +31,27 @@ class App extends Component {
                   <Route
                     exact
                     path="/"
-                    component={ Dashboard }
+                    component={ UserIsAuthenticated(Dashboard) }
                   />
                   <Route
                     exact
                     path="/client/add"
-                    component={ AddClient }
+                    component={ UserIsAuthenticated(AddClient) }
                   />
                   <Route
                     exact
                     path="/client/:id"
-                    component={ ClientDetails }
+                    component={ UserIsAuthenticated(ClientDetails) }
                   />
                   <Route
                     exact
                     path="/client/edit/:id"
-                    component={ EditClient }
+                    component={ UserIsAuthenticated(EditClient) }
                   />
                   <Route
                     exact
                     path="/login"
-                    component={ Login }
+                    component={ UserIsNotAuthenticated(Login) }
                   />
                 </Switch>
               </div>
