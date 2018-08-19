@@ -9,6 +9,19 @@ import {
 } from '../../actions/settingsActions';
 
 class Settings extends Component {
+    disableBalanceOnAddChange = () => {
+        const { setDisableBalanceOnAdd } = this.props;
+        setDisableBalanceOnAdd();
+    };
+    disableBalanceOnEditChange = () => {
+        const { setDisableBalanceOnEdit } = this.props;
+        setDisableBalanceOnEdit();
+    };
+
+    allowRegistrationChange = () => {
+        const { setAllowRegistration } = this.props;
+        setAllowRegistration();
+    };
 
     render() {
         const {
@@ -27,18 +40,19 @@ class Settings extends Component {
                     </div>
                 </div>
                 <div className="card">
-                    <div className="card-header"> Настройки</div>
+                    <h4 className="card-header bg-info text-lg-center text-white font-weight-bold">
+                        <i className="fas fa-cogs"></i> Настройки
+                    </h4>
                     <div className="card-body">
                         <form>
                             <div className="form-group">
                                 <label htmlFor="allowRegistration">
                                     <input
                                         type="checkbox"
-                                        className="form-control"
                                         name="allowRegistration"
                                         id="allowRegistration"
                                         checked={!!allowRegistration}
-                                        onChange={this.allowRegistration}
+                                        onChange={this.allowRegistrationChange}
                                     /> Позволить регистрироваться новым пользователям
                                 </label>
                             </div>
@@ -46,11 +60,10 @@ class Settings extends Component {
                                 <label htmlFor="disableBalanceOnAdd">
                                     <input
                                         type="checkbox"
-                                        className="form-control"
                                         name="disableBalanceOnAdd"
                                         id="disableBalanceOnAdd"
                                         checked={!!disableBalanceOnAdd}
-                                        onChange={this.disableBalanceOnAdd}
+                                        onChange={this.disableBalanceOnAddChange}
                                     /> Скрыть баланс на добавление
                                 </label>
                             </div>
@@ -59,11 +72,10 @@ class Settings extends Component {
                                 <label htmlFor="disableBalanceOnEdit">
                                     <input
                                         type="checkbox"
-                                        className="form-control"
                                         name="disableBalanceOnEdit"
                                         id="disableBalanceOnEdit"
                                         checked={!!disableBalanceOnEdit}
-                                        onChange={this.disableBalanceOnEdit}
+                                        onChange={this.disableBalanceOnEditChange}
                                     /> Скрыть баланс на редактирование
                                 </label>
                             </div>
